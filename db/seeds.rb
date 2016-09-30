@@ -42,7 +42,7 @@ num = 0
 }
 
 100.times {
-  playlist_songs = Playlist_song.create({
+  playlist_songs = PlaylistSong.create({
       playlist_id: rand(1..20),
       song_id: rand(1..100)
   })
