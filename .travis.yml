@@ -1,8 +1,8 @@
 language: ruby
 rvm:
- - 2.0.0
- - jruby
- - rbx-2
+ - ruby 2.0.0p353
+
+
 
 services:
   - postgresql
