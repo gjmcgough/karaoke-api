@@ -1,0 +1,49 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/apprentice/karaoke-api/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/models/party.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/models/playlist_song.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/models/playlist.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/models/song.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/models/user.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/karaoke-api/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1475274782
+  }
+}
