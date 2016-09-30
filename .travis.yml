@@ -1,6 +1,6 @@
 language: ruby
-# rvm:
-#  - ruby 2.0.0p353
+rvm:
+ - ruby 2.2.5
 
 
 
