@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
+  before_action :set_user
   def show
-    render json: User.find(params[:id])
+    @user = User.find(5)
+    if @user && is_admin?(@user)
+    render json: { user: @user, playlist: user_playlist(@user)  }
+    # renders /profile page with links:
+      # create playlist
+      # edit playlist (adding or deleting a song)
+    end
   end
 
   def new
     # facebook login page?
+    @user
   end
 
   def create
@@ -20,4 +28,8 @@ class UsersController < ApplicationController
     #add party id to the user
   end
 
+  private
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

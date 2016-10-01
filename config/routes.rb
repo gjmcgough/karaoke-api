@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+
   root 'users#show'
 
-  get 'users/show'
-  get 'users/new'
-  post 'users'
-  get 'users/:id/edit'
-  put 'users'
+  resources :users, only: [:show] do
+    resources :playlists
+  end
+
+  resources :songs, only: [:create, :index]
+
+  resources :users, only: [:create, :new, :edit, :update]
+
+  # get  '/profile', to: 'users#show', as: 'users_profile'
+  # get '/profile/playlist', to: 'playlist#show'
+
+  resources :parties, except: [:index, :edit]
+  resources :playlist_songs, only: [:new, :create, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
