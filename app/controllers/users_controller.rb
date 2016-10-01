@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user
   def show
-    @user = User.find(5)
-    if @user && is_admin?(@user)
+    # render json: User.find(params[:id])
+    @user = current_user
+    if @user
     render json: { user: @user, playlist: user_playlist(@user)  }
     # renders /profile page with links:
       # create playlist
