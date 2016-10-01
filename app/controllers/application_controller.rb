@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     # find_by needs to be changed to session_token find
     @user = User.find_by(id: 5)
   end
+
   def is_admin?(user)
     # if user token matches current token (session)
     true
