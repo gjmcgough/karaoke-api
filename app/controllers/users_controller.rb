@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     # renders /profile page with links:
       # create playlist
       # edit playlist (adding or deleting a song)
-    end
+    # end
   end
 
   def new
