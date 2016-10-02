@@ -1,18 +1,17 @@
 class SongsController < ApplicationController
   def create
-    # need spotify params API
-    @song = Song.new(params)
+      # need spotify params API
+      @song = Song.new(params)
 
-    respond_to do |format|
-      if @song.save
-        format.html { redirect_to @song, notice: "Song has been added" }
-        format.json { render json: @song }
-      else
-        format.html { render :new }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
+      respond_to do |format|
+        if @song.save
+          format.html { redirect_to @song, notice: "Song has been added" }
+          format.json { render json: @song }
+        else
+          format.html { render :new }
+          format.json { render json: @song.errors, status: :unprocessable_entity }
+        end
+    end
   end
 end
-
-
 
