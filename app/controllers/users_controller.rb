@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user
   def show
+    render json: User.all
     # render json: User.find(params[:id])
-    @user = current_user
-    if @user
-    render json: { user: @user, playlist: user_playlist(@user)  }
+    # @user = current_user
+    # if @user
+    # render json: { user: @user, playlist: user_playlist(@user)  }
     # renders /profile page with links:
       # create playlist
       # edit playlist (adding or deleting a song)
