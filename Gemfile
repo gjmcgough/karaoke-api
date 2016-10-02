@@ -27,6 +27,7 @@ gem 'figaro'
 gem 'slim'
 gem 'koala'
 gem 'faker'
+gem 'rack-cors'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
