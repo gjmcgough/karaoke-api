@@ -3,6 +3,7 @@ class PlaylistsController < ApplicationController
   def initialize(user)
     @user ||= user
   end
+
   def create
   end
 

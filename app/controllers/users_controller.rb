@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
   def show
-    # render json: User.find(params[:id])
     @user = current_user
     if @user
     render json: { user: @user, playlist: user_playlist(@user)  }
