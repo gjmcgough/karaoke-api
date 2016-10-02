@@ -1,13 +1,10 @@
-class PlaylistsController < ApplicationController
+class Api::PlaylistsController < ApplicationController
   before_action :set_playlist
 
   def show
+    @playlist = Playlist.find(playlist_params)
     render json: @playlist, status: :ok
   end
-
-  def edit
-  end
-
 
   def update
     if @playlist.update(params)
@@ -24,6 +21,10 @@ class PlaylistsController < ApplicationController
   private
   def set_playlist
     @playlist = user_playlist(current_user)
+  end
+
+  def playlist_params
+    params.require("playlist").permit("user_id")
   end
 
 end

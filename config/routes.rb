@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :users, only: [:create, :new, :edit, :update]
+    resources :songs, only: [:create, :index]
+    resources :parties, except: [:index, :edit]
+    resources :users, only: [:show] do
+      resources :playlists, only: [:edit, :update]
+    end
+  end
+
   root 'users#show'
 
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -14,11 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:create, :new, :edit, :update]
-
   resources :songs, only: [:create, :index]
-
-  # get  '/profile', to: 'users#show', as: 'users_profile'
-  # get '/profile/playlist', to: 'playlist#show'
 
   resources :parties, except: [:index, :edit]
   resources :playlist_songs, only: [:new, :create, :destroy]
