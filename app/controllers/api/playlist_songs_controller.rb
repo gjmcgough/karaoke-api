@@ -12,8 +12,8 @@ class Api::PlaylistSongsController < ApplicationController
       render nothing: true
       head 208 #already reported status code
     else
-      @playlistSong = PlaylistSong.new(playlist_id: @playlist.id, song_id: @json['song_id'])
-      head 200
+      @playlistSong = PlaylistSong.create!(playlist_id: @playlist.id, song_id: @json['song_id'])
+      render json: @playlistSong
     end
   end
 
@@ -23,11 +23,11 @@ class Api::PlaylistSongsController < ApplicationController
 
   private
   def set_playlist #finds the playlist associated with user
-    @playlist = User.find_by(username: params[:users]).playlist
+    @playlist = User.find_by(username: params[:username]).playlist
   end
 
   def find_playlist_song
-    render json: @playlistSong if @playlistSong = PlaylistSong.where(playlist_id: @playlist.id, song_id: @json[:song_id])
+    @playlistSong = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @json[:song_id])
   end
 
 end

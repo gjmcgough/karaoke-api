@@ -6,14 +6,14 @@ class Api::SongsController < ApplicationController
       render nothing: true # no error is rendered
     else
       @song = Song.new
-      @song.attributes(title: @json['title'], artist: @json['artist'])
+      @song.assign_attributes(title: @json['title'], artist: @json['artist'])
+      render json: @song if @song.save
     end
   end
 
   private
   def find_song
     @song = Song.find_by(title: @json['title'])
-    head 409 unless @song.present?
   end
 
 end

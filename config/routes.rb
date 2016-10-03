@@ -13,12 +13,12 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :new, :edit, :update, :show]
     resources :songs, only: [:create, :index]
     resources :party, only: [:show, :create, :destroy, :update, :edit]
+    resources :playlists, only: [:show]
 
-    scope ':users' do
-      resources :playlists, only: [:show]
-      patch '/playlist/:id', to: 'playlist_songs#update'
-      delete '/playlist/:id', to: 'playlist_songs#destroy'
-      post '/playlist', to: 'playlist_songs#create'
+    scope ':username' do
+      # patch '/playlist/:id', to: 'playlist_songs#update'
+      # delete '/playlist/:id', to: 'playlist_songs#destroy'
+      post '/playlist/songs', to: 'playlist_songs#create'
     end
   end
 

@@ -3,7 +3,11 @@ class Api::PartiesController < ApplicationController
   end
 
   def create
-
+    if @party.present?
+      render nothing: true
+    else
+      @party = Party.new
+      @party
   end
 
   def update
