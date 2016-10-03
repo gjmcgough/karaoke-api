@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # renders /profile page with links:
       # create playlist
       # edit playlist (adding or deleting a song)
-    # end
+    end
   end
 
   def new
@@ -18,6 +18,13 @@ class UsersController < ApplicationController
   def create
     # parse facebook data to create a new user
     # @user = User.new(name: , email: , facebook_id: , token: )
+    @user = User.new(user_params)
+    if @user.save
+      @user.playlist = Playlist.create
+      render json: { user: @user }, status: :ok
+    else
+      status 422
+    end
   end
 
   def edit
@@ -29,6 +36,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+
   def set_user
     # @user = User.find(params[:id])
   end
