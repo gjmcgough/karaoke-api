@@ -1,13 +1,10 @@
 class Api::UsersController < ApplicationController
-  before_action :set_user
+
   def show
     @user = current_user
     if @user
-    render json: { user: @user, playlist: user_playlist(@user)  }, status: :ok
+    render json: { user: @user, playlist: user_playlist(@user)  }
       head :ok
-    # renders /profile page with links:
-      # create playlist
-      # edit playlist (adding or deleting a song)
     end
   end
 
@@ -29,10 +26,6 @@ class Api::UsersController < ApplicationController
     #add party id to the user
   end
 
-  private
-  def set_user
-    # @user = User.find(params[:id])
-  end
 end
 
 

@@ -23,7 +23,7 @@ class PlaylistsController < ApplicationController
 
   private
   def set_playlist
-    @playlist = user_playlist(current_user)
+    @playlist = user_playlist(current_user).songs
   end
 
 end

@@ -1,69 +1,19 @@
 class Api::SongsController < ApplicationController
   before_filter :find_song
-  def create
 
+  def create
+    if @song.present?
+      render nothing: true # no error is rendered
+    else
+      @song = Song.new
+      @song.attributes(title: @json['title'], artist: @json['artist'])
+    end
   end
 
   private
-  def find_project
-    @song = Song.find_by_name(params[:name])
-    render nothing: true, status: :not_found unless @song.present? && @song.user == @user
+  def find_song
+    @song = Song.find_by(title: @json['title'])
+    head 409 unless @song.present?
   end
 
 end
-# class ApiProjectsController < BaseApiController
-#   before_filter :find_project, only: [:show, :update]
-
-#   before_filter only: :create do
-#     unless @json.has_key?('project') && @json['project'].responds_to?(:[]) && @json['project']['name']
-#       render nothing: true, status: :bad_request
-#     end
-#   end
-
-#   before_filter only: :update do
-#     unless @json.has_key?('project')
-#       render nothing: true, status: :bad_request
-#     end
-#   end
-
-#   before_filter only: :create do
-#     @project = Project.find_by_name(@json['project']['name'])
-#   end
-
-#   def index
-#     render json: Project.where('owner_id = ?', @user.id)
-#   end
-
-#   def show
-#     render json: @project
-#   end
-
-#   def create
-#     if @project.present?
-#       render nothing: true, status: :conflict
-#     else
-#       @project = Project.new
-#       @project.assign_attributes(@json['project']
-#       if @project.save
-#         render json: @project
-#       else
-#          render nothing: true, status: :bad_request
-#       end
-#     end
-#   end
-
-#   def update
-#     @project.assign_attributes(@json['project'])
-#     if @project.save
-#         render json: @project
-#     else
-#         render nothing: true, status: :bad_request
-#     end
-#   end
-
-#  private
-#    def find_project
-#      @project = Project.find_by_name(params[:name])
-#      render nothing: true, status: :not_found unless @project.present? && @project.user == @user
-#    end
-#  end
