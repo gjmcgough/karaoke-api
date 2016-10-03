@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     if @user
-
     render json: { user: @user, playlist: user_playlist(@user)  }, status: :ok
-    # renders /profile page with links:
-      # create playlist
-      # edit playlist (adding or deleting a song)
     end
   end
 

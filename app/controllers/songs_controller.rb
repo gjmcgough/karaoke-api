@@ -1,6 +1,5 @@
 class SongsController < ApplicationController
   def create
-      # need spotify params API
       @song = Song.new(params)
 
       respond_to do |format|

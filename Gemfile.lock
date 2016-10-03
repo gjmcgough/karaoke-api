@@ -219,6 +219,7 @@ DEPENDENCIES
   coveralls
   faker
   figaro
+  hashie
   jbuilder (~> 2.0)
   jquery-rails
   koala
