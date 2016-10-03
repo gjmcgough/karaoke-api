@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def find_or_create_user(user)
+    @user = Koala::Facebook::API.new(user.oauth_token)
+    @user.get_object("me?fields=name,friends,picture")
+  end
+
   private
 
   def find_playlist_id(user)
