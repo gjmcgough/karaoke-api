@@ -8,10 +8,11 @@
 
 15.times {
   user = User.create({
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
+      username: Faker::Name.name,
+      # email: Faker::Internet.email,
       # facebook_id:
       # token:
+      password: '123',
       party_id: rand(1..2)
   })
 }
@@ -22,7 +23,7 @@
       # email: Faker::Internet.email,
       # facebook_id:
       # token:
-      password: 123,
+      password: '123',
       party_id: nil
   })
 }
