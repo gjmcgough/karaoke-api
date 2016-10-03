@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
 
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
+    user = User.from_omniauth(auth_hash)
     user.playlist ||= Playlist.create
     session[:user_id] = user.id
     redirect_to root_path
