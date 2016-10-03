@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/signup' => 'users#show'
   post '/users' => 'users#create'
 
+  get '/login' => 'users#show'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'users#show'
+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'

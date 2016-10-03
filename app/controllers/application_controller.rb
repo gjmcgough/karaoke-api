@@ -13,9 +13,15 @@ class ApplicationController < ActionController::Base
     playlist = Playlist.find(find_playlist_id(user)).songs
   end
 
+  def authorize
+    redirect_to '/login' unless current_user
+  end
+
   private
   def find_playlist_id(user)
     list_id = user.playlist.id
   end
+
+
 
 end
