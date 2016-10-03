@@ -2,11 +2,12 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
-  # before_filter :parse_request
+  before_filter :parse_request
 
   def user_playlist(user)
-    # @playlist = Playlist.find(find_playlist_id(user)).songs
+    @playlist = Playlist.find(find_playlist_id(user)).songs
     user.playlist.songs
+    # take in user and output the users's songs
   end
 
   def authorize
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def find_playlist_id(user)
-    list_id = user.playlist.id
+    user.playlist.id
   end
 
   def parse_request

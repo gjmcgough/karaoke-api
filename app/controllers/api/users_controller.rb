@@ -1,10 +1,9 @@
 class Api::UsersController < ApplicationController
-
+  skip_before_filter :parse_request, only: [:show]
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     if @user
-    render json: { user: @user, playlist: user_playlist(@user)  }
-      head :ok
+      render json: { user: @user, playlist: @user.playlist.to_json(include:[:songs, :user])  }
     end
   end
 

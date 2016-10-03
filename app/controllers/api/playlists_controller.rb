@@ -1,10 +1,9 @@
 class Api::PlaylistsController < ApplicationController
-  before_action :set_playlist
+  # before_action :set_playlist
 
   def show
     @playlist = Playlist.find(params[:id])
-    render json: @playlist.songs
-      head :ok
+    render json: @playlist.to_json(include: [:songs, :user])
   end
 
   def destroy
