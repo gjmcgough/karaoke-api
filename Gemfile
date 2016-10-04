@@ -38,6 +38,7 @@ gem 'nokogiri', '1.6.7.2'
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-facebook', '~> 1.4.1'
 
+gem 'rspotify'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'artists/index'
+
+  get 'artists/show'
+
   root 'users#show'
 
   namespace :api do
@@ -8,6 +12,11 @@ Rails.application.routes.draw do
     get '/login' => 'users#show'
     post '/login' => 'sessions#create'
     get '/logout' => 'users#show'
+
+
+    get '/artists', to: 'artists#index'
+    get '/artists/:id', to:'artists#show', as: 'artist'
+    post 'songs' => 'songs#create'
 
 
     resources :users, only: [:create, :new, :edit, :update, :show]
