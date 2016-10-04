@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(auth_hash)
     user.playlist ||= Playlist.create
     session[:user_id] = user.id
-    redirect_to root_path
+    render json: { user: @user }, status: :ok
   end
 
   def destroy

@@ -10,5 +10,13 @@
  </div>
  <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+<ul>
+<% current_user.playlist.songs.each do |track| %>
+<li>
+  Title: <%= track.title %> by :<%= track.artist %><br>
+</li>
 <% end %>
+</ul>
+<% end %>
+
 
